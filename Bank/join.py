@@ -65,5 +65,10 @@ def join(process):
     while password.lower() == password:
         password = input("password could not consist of only lowe cases please enter another password")
 
+    # we append the password to the password.txt
+    password_txt = open("password.txt", "a")
+    password_txt.write(password)
 
+    print("WELCOME!")
+    print("you joined the jjb bank succesfuly")
 
