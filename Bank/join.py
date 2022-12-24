@@ -1,7 +1,7 @@
 def join(process):
     # the list of email adresses already exist
     email_list = []
-    email_txt = open("e-mail.txt", "r")
+    email_txt = open("email.txt", "r")
     while email_txt.readline() == "":
         current_email = email_txt.readline()
         email_list.append(current_email)
