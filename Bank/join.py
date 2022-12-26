@@ -2,9 +2,10 @@ def join(process):
     # the list of email adresses already exist
     email_list = []
     email_txt = open("email.txt", "r")
-    while email_txt.readline() == "":
+    current_email = email_txt.readline()
+    while current_email == "":
+        email_list.append(current_email[:len(current_email)-1])
         current_email = email_txt.readline()
-        email_list.append(current_email)
     email_txt.close()
 
     # key word that are gotta be in an email adress
@@ -37,11 +38,6 @@ def join(process):
     while email in email_list:
         email = input("this e-mail adress has already used by another user please select another e-mail adress")
 
-    # we wrote the email adress to the e-mail.txt
-    email_txt = open("email.txt", "a")
-    email_txt.write(f"{email}\n")
-    email_txt.close()
-
     # requirements that are gotta be in a password
     print("   your password has to contain these requirements:   ")
     print("------------------------------------------------------")
@@ -65,9 +61,15 @@ def join(process):
     while password.lower() == password:
         password = input("password could not consist of only lowe cases please enter another password")
 
+    # we wrote the email adress to the e-mail.txt
+    email_txt = open("email.txt", "a")
+    email_txt.write(f"{email}\n")
+    email_txt.close()
+    
     # we append the password to the password.txt
     password_txt = open("password.txt", "a")
     password_txt.write(password)
+    password_txt.close()
 
     print("WELCOME!")
     print("you joined the jjb bank succesfuly")
