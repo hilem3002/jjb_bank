@@ -1,12 +1,15 @@
 def join(process):
     # the list of email adresses already exist
     email_list = []
-    email_txt = open("email.txt", "r")
-    current_email = email_txt.readline()
-    while current_email == "":
-        email_list.append(current_email[:len(current_email)-1])
+    try:
+        email_txt = open("email.txt", "r")
         current_email = email_txt.readline()
-    email_txt.close()
+        while current_email == "":
+            email_list.append(current_email[:len(current_email)-1])
+            current_email = email_txt.readline()
+        email_txt.close()
+    except FileNotFoundError:
+    email_list = []
 
     # key word that are gotta be in an email adress
     print("you could use these extension: (@gmail.com, @outlook.com, @hotmail.com, @yahoo.com)")
